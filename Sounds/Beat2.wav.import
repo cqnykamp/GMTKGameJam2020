@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Beat2.wav-60923d3b6327611a9d5b5d3318645518.sample"
+
+[deps]
+
+source_file="res://Sounds/Beat2.wav"
+dest_files=[ "res://.import/Beat2.wav-60923d3b6327611a9d5b5d3318645518.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

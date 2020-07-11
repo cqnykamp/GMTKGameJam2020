@@ -45,6 +45,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="World" type="Node2D"]
 position = Vector2( -2, -3 )
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_vertical_guides_": [ -19.1198 ]
+}
 
 [node name="CountDown" parent="." instance=ExtResource( 7 )]
 position = Vector2( 511.597, 39 )

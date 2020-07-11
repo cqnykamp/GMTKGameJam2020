@@ -39,6 +39,7 @@ func _physics_process(delta):
 
 func destroy():
 	queue_free()
+	print('deleted')
 	
 func _on_Time_Reset():
 	pass

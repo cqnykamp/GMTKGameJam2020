@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TinCrush1.wav-ecdb46c51e28ac8674e11e5ebf211059.sample"
+
+[deps]
+
+source_file="res://Sounds/TinCrush1.wav"
+dest_files=[ "res://.import/TinCrush1.wav-ecdb46c51e28ac8674e11e5ebf211059.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

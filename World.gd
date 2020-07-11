@@ -97,6 +97,7 @@ func _on_Player_player_died():
 func _on_Player_player_reached_exit():
 	get_tree().call_group("robots", "_on_Time_Timeout")
 	passed_round = true
+	$CountDown.count_back_up(0)
 	$PauseAfterTimeout.start()
 
 func _on_PauseAfterTimeout_timeout():
@@ -112,6 +113,7 @@ func _on_CountDown_time_reset():
 	
 	print('time back to full, now we play again')
 	get_tree().call_group("robots", "_on_Time_Reset")
+	$CountDown.count_back_up(0)
 	$PauseAfterRewind.start()
 
 func _on_PauseAfterRewind_timeout():

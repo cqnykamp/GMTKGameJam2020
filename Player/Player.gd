@@ -13,6 +13,7 @@ var GRAVITY = 1000.0
 
 var velocity = Vector2.ZERO
 var jumps_left = 0
+var on_ground = false
 
 var jump = false
 
@@ -37,9 +38,13 @@ func _physics_process(delta):
 	jump = Input.is_action_just_pressed('ui_up')
 	
 	if is_on_floor():
+		on_ground = true
 		jumps_left = 1
+	else:
+		on_ground = false
+
 	
-	if jump and jumps_left > 0:
+	if jump and on_ground and jumps_left > 0:
 		velocity.y = JUMP_SPEED
 		jumps_left -= 1
 		

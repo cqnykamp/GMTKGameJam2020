@@ -6,10 +6,10 @@
 [ext_resource path="res://Sounds/ActionSoundEffects.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.05943, 25.5488 )
+extents = Vector2( 5.05943, 18.4901 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 29.5125, 4.9451 )
+extents = Vector2( 19.5386, 4.9451 )
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )

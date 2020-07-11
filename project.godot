@@ -22,7 +22,6 @@ _global_script_class_icons={
 
 config/name="GMTKGameJam2020"
 run/main_scene="res://World.tscn"
-config/icon="res://Images/icon.png"
 
 [gdnative]
 
@@ -33,12 +32,4 @@ singletons=[ "res://git_api.gdnlib" ]
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Ground"
 2d_physics/layer_3="Enemy"
-2d_physics/layer_4="Portal"
-
-[rendering]
-
-quality/driver/driver_name="GLES2"
-vram_compression/import_etc=true
-vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.0352941, 0.0588235, 0.321569, 1 )
-environment/default_environment="res://default_env.tres"
+2d_physics/layer_4="Goals"

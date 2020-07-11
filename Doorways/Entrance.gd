@@ -1,10 +1,10 @@
-extends Area2D
+extends "res://Doorways/Doorway.gd"
 
 var active = false
 
 func set_active(is_active):
 	active = is_active
 	if active:
-		modulate = Color("0000962e")
+		$Sprite.modulate = Color("0000962e")
 	else:
-		modulate = Color("0000962e")
+		$Sprite.modulate = Color("0000962e")

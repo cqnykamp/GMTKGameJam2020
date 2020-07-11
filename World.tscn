@@ -54,41 +54,102 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 2
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 393222, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 655360, 0, 0, 655361, 0, 0, 655383, 0, 0, 655384, 0, 0, 720896, 0, 0, 720897, 0, 0, 720920, 0, 0, 720921, 0, 0, 720922, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917510, 0, 0, 917511, 0, 0, 917516, 0, 0, 917518, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917532, 0, 0, 917533, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983046, 0, 0, 983047, 0, 0, 983052, 0, 0, 983054, 0, 0, 983062, 0, 0, 983063, 0, 0, 983068, 0, 0, 983069, 0, 0, 1048576, 0, 0, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1048597, 0, 0, 1048598, 0, 0, 1048599, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048604, 0, 0, 1048605, 0, 0, 1114112, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0 )
+tile_data = PoolIntArray( 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 393222, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 655360, 0, 0, 655361, 0, 0, 655383, 0, 0, 655384, 0, 0, 720896, 0, 0, 720897, 0, 0, 720918, 0, 0, 720919, 0, 0, 720920, 0, 0, 720921, 0, 0, 720922, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 917504, 0, 0, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917510, 0, 0, 917511, 0, 0, 917516, 0, 0, 917518, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 917532, 0, 0, 917533, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983046, 0, 0, 983047, 0, 0, 983052, 0, 0, 983054, 0, 0, 983062, 0, 0, 983063, 0, 0, 983068, 0, 0, 983069, 0, 0, 1048576, 0, 0, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1048597, 0, 0, 1048598, 0, 0, 1048599, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048604, 0, 0, 1048605, 0, 0, 1114112, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0 )
 
 [node name="Entrances" type="Node2D" parent="."]
 
 [node name="0" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 420.125, 408.5 )
+position = Vector2( 618.858, 410.4 )
 
 [node name="1" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 521.597, 176.913 )
+position = Vector2( 336.308, 471.051 )
 
 [node name="2" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 885.683, 125.376 )
+position = Vector2( 625.258, 182.825 )
 
 [node name="3" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 286.308, 266.95 )
+position = Vector2( 443.965, 194.025 )
 
 [node name="4" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 835.102, 434 )
+position = Vector2( 527.949, 469.451 )
+
+[node name="5" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 247.856, 138.825 )
+
+[node name="6" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 522.949, 335.078 )
+
+[node name="7" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 167.008, 194.025 )
+
+[node name="8" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 280.888, 477.451 )
+
+[node name="9" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 631.658, 289.215 )
+
+[node name="10" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 437.565, 332.375 )
+
+[node name="11" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 916.01, 123.776 )
+
+[node name="13" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 735.407, 289.215 )
+
+[node name="14" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 638.058, 495.301 )
+
+[node name="12" parent="Entrances" instance=ExtResource( 3 )]
+position = Vector2( 841.675, 477.451 )
 
 [node name="Exits" type="Node2D" parent="."]
+position = Vector2( 0, 8 )
 
 [node name="0" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 369.714, 352.439 )
+position = Vector2( 555.197, 187.625 )
 
 [node name="1" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 531.597, 346.039 )
+position = Vector2( 767.907, 281.215 )
 
 [node name="2" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 211.714, 418.5 )
+position = Vector2( 741.407, 434.651 )
 
 [node name="3" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 659.845, 402.1 )
+position = Vector2( 620.258, 488.901 )
 
 [node name="4" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 248.326, 418.5 )
+position = Vector2( 866.895, 123.776 )
+
+[node name="5" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 922.411, 402.4 )
+
+[node name="6" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 100.107, 346.375 )
+
+[node name="7" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 959.611, 146.425 )
+
+[node name="8" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 493.965, 186.025 )
+
+[node name="9" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 217.008, 408.8 )
+
+[node name="10" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 325.856, 211.891 )
+
+[node name="11" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 432.565, 480.901 )
+
+[node name="13" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 319.456, 487.301 )
+
+[node name="14" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 511.597, 152.825 )
+
+[node name="12" parent="Exits" instance=ExtResource( 5 )]
+position = Vector2( 160.608, 488.901 )
 
 [node name="CountDown" parent="." instance=ExtResource( 7 )]
 position = Vector2( 511.597, 39 )

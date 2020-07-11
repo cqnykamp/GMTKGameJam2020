@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sounds/Rewind1.wav" type="AudioStream" id=1]
+[ext_resource path="res://Effects/SoundEffect.gd" type="Script" id=2]
+
+[node name="RewindEffect" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true

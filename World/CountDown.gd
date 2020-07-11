@@ -4,7 +4,7 @@ signal timeout
 signal time_reset
 signal new_time
 
-const level_start_time = 20
+const level_start_time = 10
 var time = 0
 var time_factor = 0
 

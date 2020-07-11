@@ -3,6 +3,7 @@ extends Node2D
 signal next_round
 
 onready var Player = preload("res://Player/Player.tscn")
+onready var RewindEffect = preload("res://Effects/RewindEffect.tscn")
 
 var round_id = 0
 var passed_round = false
@@ -32,14 +33,19 @@ func _on_Player_player_died():
 	get_tree().call_group("robots", "_on_Time_Timeout")
 	$PauseAfterTimeout.start()
 
+
 func _on_Player_player_reached_exit():
 	get_tree().call_group("robots", "_on_Time_Timeout")
 	passed_round = true
 	$CountDown.count_back_up(0)
 	$PauseAfterTimeout.start()
+	
 
 func _on_PauseAfterTimeout_timeout():
 	$CountDown.count_back_up(-5)
+	
+	var rewindEffect = RewindEffect.instance()
+	get_tree().current_scene.add_child(rewindEffect)
 
 
 

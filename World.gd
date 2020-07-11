@@ -39,7 +39,7 @@ func _on_Player_player_reached_exit():
 	$PauseAfterTimeout.start()
 
 func _on_PauseAfterTimeout_timeout():
-	$CountDown.count_back_up(-3)
+	$CountDown.count_back_up(-5)
 
 
 

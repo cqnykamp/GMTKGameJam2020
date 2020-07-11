@@ -76,13 +76,13 @@ position = Vector2( 835.102, 434 )
 [node name="Exits" type="Node2D" parent="."]
 
 [node name="0" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 733.964, 447.5 )
+position = Vector2( 369.714, 352.439 )
 
 [node name="1" parent="Exits" instance=ExtResource( 5 )]
 position = Vector2( 531.597, 346.039 )
 
 [node name="2" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 361.714, 346.039 )
+position = Vector2( 211.714, 418.5 )
 
 [node name="3" parent="Exits" instance=ExtResource( 5 )]
 position = Vector2( 659.845, 402.1 )

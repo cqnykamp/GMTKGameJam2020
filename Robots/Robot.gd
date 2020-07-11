@@ -1,11 +1,11 @@
 extends StaticBody2D
 
-export var velocity = Vector2(100, 0)
-
 var playback = PoolVector2Array()
 var sound_effects = PoolStringArray()
 var id = 0
 var time_factor = 0
+
+var movement_direction = Vector2.ZERO
 
 func _ready():
 	add_to_group("robots")
@@ -31,6 +31,14 @@ func _physics_process(delta):
 		visible = true
 		$CollisionShape2D.disabled = false
 		position = playback[id]
+		if id > 0:
+			movement_direction = playback[id] - playback[id-1]
+			movement_direction = movement_direction.normalized()
+		else:
+			movement_direction = playback[id] - Vector2.ZERO
+			movement_direction = movement_direction.normalized()
+			
+		
 		if time_factor != 0:
 			$ActionSoundEffects.play(sound_effects[id])
 	else:

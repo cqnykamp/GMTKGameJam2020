@@ -42,6 +42,8 @@ func _ready():
 		$Sprite.frame = 0
 	else:
 		$Sprite.frame = 2
+		
+	$Sprite.frame = randi() % 3
 
 
 func _process(delta):

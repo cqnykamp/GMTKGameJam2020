@@ -22,7 +22,7 @@ func _ready():
 	
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	$Popup.pause_mode = Node.PAUSE_MODE_PROCESS
-
+#	$Sprite.frame = randi() % 3
 	
 	for goal in get_tree().get_nodes_in_group("goals"):
 		connect("next_round", goal, "_on_Next_Round_Start")

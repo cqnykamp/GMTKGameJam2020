@@ -1,0 +1,290 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://World/SMBackground.png" type="Texture" id=2]
+[ext_resource path="res://World/SupermarketSheet.png" type="Texture" id=3]
+[ext_resource path="res://Sounds/SupermarketMusic1.wav" type="AudioStream" id=4]
+[ext_resource path="res://Doorways/Checkpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Doorways/Entrance.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameCamera.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/CountDown.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Doorways/Exit.tscn" type="PackedScene" id=9]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "SupermarketSheet.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "SupermarketSheet.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 256, 0, 128, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="World" type="Node2D"]
+position = Vector2( -2, -3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ -19.1198 ]
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 0, -2.11893 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 4096, 2400 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.25, 0.25 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 2
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 65536, 0, 0, 65567, 0, 0, 131072, 0, 0, 131089, 1, 0, 131090, 1, 0, 131097, 1, 0, 131098, 1, 0, 131099, 1, 0, 131103, 0, 0, 196608, 0, 0, 196609, 0, 0, 196617, 1, 0, 196618, 1, 0, 196625, 0, 0, 196626, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196639, 0, 0, 327679, 0, 0, 262144, 0, 0, 262148, 0, 0, 262149, 0, 0, 262153, 0, 0, 262154, 0, 0, 262158, 1, 0, 262159, 1, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 262175, 0, 0, 327680, 0, 0, 327684, 0, 0, 327685, 1, 0, 327686, 1, 0, 327694, 1, 0, 327695, 1, 0, 327703, 0, 0, 327710, 0, 0, 327711, 0, 0, 393216, 0, 0, 393221, 1, 0, 393222, 1, 0, 393230, 0, 0, 393231, 0, 0, 393247, 0, 0, 458752, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 458779, 1, 0, 458780, 1, 0, 458783, 0, 0, 524288, 0, 0, 524290, 1, 0, 524291, 1, 0, 524312, 1, 0, 524313, 1, 0, 524314, 1, 0, 524315, 1, 0, 524316, 1, 0, 524317, 0, 0, 524319, 0, 0, 655359, 0, 0, 589824, 0, 0, 589826, 1, 0, 589827, 1, 0, 589834, 0, 0, 589835, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589855, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 1, 0, 655363, 1, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655387, 0, 0, 655391, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 1, 0, 720899, 1, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720915, 0, 0, 720916, 0, 0, 720917, 0, 0, 720926, 0, 0, 720927, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786443, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786456, 0, 0, 786463, 0, 0, 851968, 0, 0, 851976, 0, 0, 851977, 0, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851983, 1, 0, 851999, 0, 0, 983039, 0, 0, 917504, 0, 0, 917505, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917525, 0, 0, 917526, 0, 0, 917527, 0, 0, 917528, 0, 0, 917529, 0, 0, 917530, 0, 0, 917531, 0, 0, 917535, 0, 0, 983040, 0, 0, 983046, 1, 0, 983047, 1, 0, 983048, 1, 0, 983049, 1, 0, 983050, 1, 0, 983051, 1, 0, 983052, 1, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983066, 1, 0, 983067, 1, 0, 983071, 0, 0, 1048576, 0, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 0, 0, 1048586, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 1048598, 1, 0, 1048599, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048606, 0, 0, 1048607, 0, 0, 1114112, 0, 0, 1114113, 0, 0, 1114116, 0, 0, 1114118, 1, 0, 1114119, 1, 0, 1114120, 1, 0, 1114121, 1, 0, 1114122, 1, 0, 1114123, 1, 0, 1114124, 1, 0, 1114126, 0, 0, 1114131, 1, 0, 1114132, 1, 0, 1114133, 1, 0, 1114134, 1, 0, 1114135, 1, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1114141, 0, 0, 1114142, 0, 0, 1114143, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 0, 0, 1179679, 0, 0 )
+
+[node name="Entrances" type="Node2D" parent="."]
+
+[node name="0" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 218.4, 408.811 )
+
+[node name="1" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 696.088, 293.827 )
+
+[node name="2" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 110.053, 152.33 )
+
+[node name="3" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 849.626, 424.538 )
+
+[node name="4" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 973.053, 125.384 )
+
+[node name="5" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 976.062, 493.717 )
+
+[node name="6" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 173.492, 94.3222 )
+
+[node name="7" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 533.829, 556.713 )
+
+[node name="8" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 481.663, 174.396 )
+
+[node name="9" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 303.266, 495.375 )
+
+[node name="10" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 724.932, 105.493 )
+
+[node name="11" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 307.504, 105.493 )
+
+[node name="12" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 368.952, 264.412 )
+
+[node name="13" parent="Entrances" instance=ExtResource( 6 )]
+position = Vector2( 298.851, 298.145 )
+
+[node name="Exits" type="Node2D" parent="."]
+
+[node name="0" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 858.534, 519.014 )
+
+[node name="1" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 205.891, 549.447 )
+
+[node name="2" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 414.039, 552.688 )
+
+[node name="3" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 578.708, 68.7287 )
+
+[node name="4" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 424.989, 297.013 )
+
+[node name="5" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 849.583, 266.775 )
+
+[node name="6" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 627.837, 327.251 )
+
+[node name="7" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 767.688, 105.505 )
+
+[node name="8" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 103.76, 358.767 )
+
+[node name="9" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 193.515, 199.211 )
+
+[node name="10" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 151.137, 65.7183 )
+
+[node name="11" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 818.598, 421.698 )
+
+[node name="12" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 966.923, 135.643 )
+
+[node name="13" parent="Exits" instance=ExtResource( 9 )]
+position = Vector2( 102.401, 519.169 )
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="0-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 524.682, 425.955 )
+
+[node name="1-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 625.6, 464.185 )
+
+[node name="1-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 458.844, 332.369 )
+
+[node name="2-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 48.6548, 518.063 )
+
+[node name="2-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 303.525, 400.182 )
+
+[node name="2-2" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 685.49, 556.686 )
+
+[node name="3-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 335.102, 109.643 )
+
+[node name="3-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 235.426, 204.012 )
+
+[node name="3-2" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 757.047, 267.113 )
+
+[node name="4-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 142.462, 209.204 )
+
+[node name="4-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 238.78, 431.802 )
+
+[node name="4-2" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 878.668, 432.037 )
+
+[node name="4-3" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 685.827, 103.85 )
+
+[node name="5-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 779.872, 370.005 )
+
+[node name="5-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 302.362, 562.773 )
+
+[node name="5-2" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 335.12, 272.991 )
+
+[node name="6-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 85.6516, 556.153 )
+
+[node name="6-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 873.102, 68.5636 )
+
+[node name="7-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 49.114, 302.909 )
+
+[node name="7-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 973.896, 335.667 )
+
+[node name="8-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 813.102, 76.5636 )
+
+[node name="8-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 686.881, 424.355 )
+
+[node name="9-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 271.316, 400.754 )
+
+[node name="9-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 147.499, 110.26 )
+
+[node name="10-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 973.88, 139.925 )
+
+[node name="10-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 463.219, 171.708 )
+
+[node name="10-2" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 274.635, 298.844 )
+
+[node name="11-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 592.474, 76.3568 )
+
+[node name="11-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 465.338, 519.212 )
+
+[node name="12-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 630.614, 326.39 )
+
+[node name="12-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 950.572, 334.866 )
+
+[node name="13-0" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 86.0504, 362.412 )
+
+[node name="13-1" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 50.0287, 74.2378 )
+
+[node name="13-2" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 495.704, 173.464 )
+
+[node name="PauseAfterTimeout" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PauseAfterRewind" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CountDown" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="Camera2D" parent="." instance=ExtResource( 7 )]
+current = false
+[connection signal="timeout" from="PauseAfterTimeout" to="." method="_on_PauseAfterTimeout_timeout"]
+[connection signal="timeout" from="PauseAfterRewind" to="." method="_on_PauseAfterRewind_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+[connection signal="new_time" from="CanvasLayer/CountDown" to="." method="_on_CountDown_new_time"]
+[connection signal="time_reset" from="CanvasLayer/CountDown" to="." method="_on_CountDown_time_reset"]
+[connection signal="timeout" from="CanvasLayer/CountDown" to="." method="_on_CountDown_timeout"]

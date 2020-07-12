@@ -162,7 +162,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=32]
 resource_name = "FadeIn"
 length = 0.3
 tracks/0/type = "value"
@@ -178,8 +178,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=32]
-resource_name = "FadeOut"
+[sub_resource type="Animation" id=33]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:modulate")
@@ -202,14 +201,13 @@ stream = ExtResource( 1 )
 autoplay = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 frames = SubResource( 31 )
 frame = 1
 speed_scale = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FadeIn = SubResource( 33 )
-anims/FadeOut = SubResource( 32 )
+anims/FadeIn = SubResource( 32 )
+anims/FadeOut = SubResource( 33 )
 
 [node name="StartFadeOut" type="Timer" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -12,6 +12,7 @@ func _ready():
 		print(active_round)
 		add_to_group("goals")
 		add_to_group("checkpoints" + name[0])
+		$Sprite.frame = randi() % 3
 
 func _process(delta):
 	if Engine.editor_hint:
@@ -31,4 +32,6 @@ func _on_Next_Round_Start(round_id):
 func _on_Checkpoint_body_entered(body):
 	#player has gotten it
 	emit_signal("player_collected_checkpoint")
-	queue_free()
+	visible = false
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)

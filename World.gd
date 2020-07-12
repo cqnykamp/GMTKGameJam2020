@@ -5,6 +5,8 @@ signal next_round
 onready var Player = preload("res://Player/Player.tscn")
 onready var RewindEffect = preload("res://Effects/RewindEffect.tscn")
 
+onready var countDown = $CanvasLayer/CountDown
+
 var round_id = 0
 var passed_round = false
 
@@ -41,14 +43,14 @@ func _on_Player_player_reached_exit():
 	active_playing = false
 	get_tree().call_group("robots", "_on_Time_Timeout")
 	passed_round = true
-#	$CountDown.count_back_up(0)
+#	countDown.count_back_up(0)
 	$PauseAfterTimeout.start()
 
 func _on_PauseAfterTimeout_timeout():
-	$CountDown.count_back_up(-5)
+	countDown.count_back_up(-5)
 	
 	var rewindEffect = RewindEffect.instance()
-	get_tree().current_scene.add_child(rewindEffect)
+	$CanvasLayer.add_child(rewindEffect)
 	rewindEffect.global_position = get_viewport_rect().size / 2
 
 
@@ -66,12 +68,12 @@ func _on_CountDown_time_reset():
 	
 	print('time back to full, now we play again')
 	get_tree().call_group("robots", "_on_Time_Reset")
-	$CountDown.count_back_up(0)
+	countDown.count_back_up(0)
 	$PauseAfterRewind.start()
 
 func _on_PauseAfterRewind_timeout():
 	active_playing = true
-	$CountDown.count_down()
+	countDown.count_down()
 	spawn_player()
 
 
@@ -95,3 +97,7 @@ func spawn_player():
 	cameraTracker.remote_path = NodePath("/root/World/Camera2D")
 	player.add_child(cameraTracker)
 	cameraTracker.position = Vector2(0,0)
+
+
+func _on_AudioStreamPlayer_finished():
+	$AudioStreamPlayer.play()

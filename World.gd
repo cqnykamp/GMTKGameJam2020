@@ -18,6 +18,10 @@ var active_playing = true
 
 func _ready():
 	
+	pause_mode = Node.PAUSE_MODE_PROCESS
+	$Popup.pause_mode = Node.PAUSE_MODE_PROCESS
+
+	
 	for goal in get_tree().get_nodes_in_group("goals"):
 		connect("next_round", goal, "_on_Next_Round_Start")
 		var checkpoints = get_tree().get_nodes_in_group("checkpoints" + str(goal.name))
@@ -29,6 +33,11 @@ func _ready():
 	
 	emit_signal("next_round", round_id)
 	$PauseAfterRewind.start()
+	
+func _process(delta):
+	if Input.is_action_just_pressed("restart"):
+		get_tree().paused = true
+		$Popup.popup_centered(Vector2(100, 50))
 
 
 func _on_CountDown_new_time(time, time_factor):
@@ -118,3 +127,11 @@ func spawn_player():
 
 func _on_AudioStreamPlayer_finished():
 	$AudioStreamPlayer.play()
+
+
+func _on_Popup_confirmed():
+	LevelNum.reload_level()
+	get_tree().paused = false
+
+func _on_Popup_popup_hide():
+	get_tree().paused = false

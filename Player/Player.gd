@@ -5,6 +5,7 @@ signal player_reached_exit
 
 var PlayerReplay = preload("res://Player/PlayerReplay.tscn")
 var Robot = preload("res://Robots/Robot.tscn")
+var ExitEffect = preload("res://Effects/ExitEffect.tscn")
 
 var MAX_SPEED = 200.0 # maximum horizontal velocity thru air
 var JUMP_SPEED = -500.0
@@ -229,17 +230,31 @@ func _on_GoalDetector_area_entered(area):
 	sound_effects.append("goal")
 	$ActionSoundEffects.play("goal")
 	
+	print('spawn robot')
 	spawn_robot()
 	queue_free()
+	
+#	var exitEffect = ExitEffect.instance()
+#	exitEffect.set_player_image($Sprite.frame)
+#	exitEffect.global_position = global_position
+#	get_tree().current_scene.add_child(exitEffect)
+#	exitEffect.play_forward_and_destroy()
+#	exitEffect.connect("at_end", self, "_on_Exit_Animation_Complete")
+#	visible = false
+	
+func _on_Exit_Animation_Complete():
+	pass
 
 func spawn_clone():
 	var playerReplay = PlayerReplay.instance()
-	playerReplay.start_at_end(record, sound_effects)
+	playerReplay.frame_id = $Sprite.frame
 	get_tree().current_scene.call_deferred("add_child",playerReplay)
+	playerReplay.call_deferred("start_at_end", record, sound_effects)
 	playerReplay.global_position = global_position
 	
 func spawn_robot():
 	var robot = Robot.instance()
-	robot.start_at_end(record, sound_effects)
+	robot.frame_id = $Sprite.frame
 	get_tree().current_scene.call_deferred("add_child",robot)
+	robot.call_deferred("start_at_end", record, sound_effects)
 	robot.global_position = global_position

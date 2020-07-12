@@ -8,6 +8,8 @@ const level_start_time = 10
 var time = 0
 var time_factor = 0
 
+var has_signaled_timeout = false
+
 func _ready():
 	$Label.text = str(level_start_time)
 	
@@ -15,10 +17,9 @@ func _process(delta):
 	
 	time += time_factor * delta
 	
-	if time > level_start_time and time_factor != 0:
+	if time > level_start_time and not has_signaled_timeout:
 		emit_signal("timeout")
-		time = level_start_time
-		time_factor = 0
+		has_signaled_timeout = true
 		
 	elif time < 0 and time_factor != 0:
 		emit_signal("time_reset")
@@ -28,6 +29,9 @@ func _process(delta):
 	if time_factor != 0:
 		emit_signal("new_time", time, time_factor)
 		pass
+		
+	if time < level_start_time:
+		has_signaled_timeout = false
 	
 	$Label.text = str(level_start_time - floor(time))
 

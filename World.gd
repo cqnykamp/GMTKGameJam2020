@@ -10,6 +10,8 @@ var passed_round = false
 
 var player
 
+var active_playing = true
+
 func _ready():
 	spawn_player()
 	
@@ -26,26 +28,31 @@ func _on_CountDown_new_time(time, time_factor):
 
 
 func _on_CountDown_timeout():
-	print('time is out, round failed')
-	player.die()
+	if active_playing:
+		print('time is out, round failed')
+		player.die()
+	else:
+		print('time is out, but we were not playing anyway')
 	
 func _on_Player_player_died():
+	active_playing = false
 	get_tree().call_group("robots", "_on_Time_Timeout")
 	$PauseAfterTimeout.start()
 
 
 func _on_Player_player_reached_exit():
+	active_playing = false
 	get_tree().call_group("robots", "_on_Time_Timeout")
 	passed_round = true
-	$CountDown.count_back_up(0)
+#	$CountDown.count_back_up(0)
 	$PauseAfterTimeout.start()
-	
 
 func _on_PauseAfterTimeout_timeout():
 	$CountDown.count_back_up(-5)
 	
 	var rewindEffect = RewindEffect.instance()
 	get_tree().current_scene.add_child(rewindEffect)
+	rewindEffect.global_position = get_viewport_rect().size / 2
 
 
 
@@ -66,10 +73,9 @@ func _on_CountDown_time_reset():
 	$PauseAfterRewind.start()
 
 func _on_PauseAfterRewind_timeout():
+	active_playing = true
 	$CountDown.count_down()
 	spawn_player()
-
-
 
 
 func spawn_player():

@@ -464,9 +464,9 @@ __meta__ = {
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 margin_left = 28.0
-margin_top = 28.5636
+margin_top = 4.5636
 margin_right = 981.0
-margin_bottom = 44.5636
+margin_bottom = 20.5636
 theme = SubResource( 3 )
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )

@@ -6,6 +6,8 @@ onready var Player = preload("res://Player/Player.tscn")
 onready var RewindEffect = preload("res://Effects/RewindEffect.tscn")
 onready var countDown = $CanvasLayer/CountDown
 
+onready var TimeoutEffect = preload("res://Effects/TimeoutEffect.tscn")
+
 var SpawnEffect = preload("res://Effects/SpawnEffect.tscn")
 
 var round_id = 0
@@ -47,6 +49,10 @@ func _on_CountDown_new_time(time, time_factor):
 func _on_CountDown_timeout():
 	if active_playing:
 		print('time is out, round failed')
+		var effect = TimeoutEffect.instance()
+		get_tree().current_scene.add_child(effect)
+		effect.play(1)
+		
 		player.die()
 	else:
 		print('time is out, but we were not playing anyway')

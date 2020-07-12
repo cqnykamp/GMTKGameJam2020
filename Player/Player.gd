@@ -258,3 +258,7 @@ func spawn_robot():
 	get_tree().current_scene.call_deferred("add_child",robot)
 	robot.call_deferred("start_at_end", record, sound_effects)
 	robot.global_position = global_position
+
+
+func _on_CheckpointDetector_area_entered(area):
+	pass

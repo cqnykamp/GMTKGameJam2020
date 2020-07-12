@@ -1,15 +1,17 @@
 tool
 extends Area2D
 
-signal player_reached_exit
+signal player_collected_checkpoint
 
-var active_round = 0
+var active_round = 5
 
 func _ready():
 	if not Engine.editor_hint:
 		$EditorLabel.visible = false
-		active_round = int(name)
-#		add_to_group("goals")
+		active_round = int(name.substr(0, name.length()-2))
+		print(active_round)
+		add_to_group("goals")
+		add_to_group("checkpoints" + name[0])
 
 func _process(delta):
 	if Engine.editor_hint:
@@ -17,11 +19,16 @@ func _process(delta):
 
 func _on_Next_Round_Start(round_id):
 	if round_id == active_round:
-		monitorable = true
-		monitoring = true
-
-		$Sprite.modulate = Color("ff00c5")
+		set_deferred("monitorable", true)
+		set_deferred("monitoring", true)
+		visible = true
 	else:
 		set_deferred("monitorable", false)
 		set_deferred("monitoring", false)
-		$Sprite.modulate = Color("00ff00c5")
+		visible = false
+
+
+func _on_Checkpoint_body_entered(body):
+	#player has gotten it
+	emit_signal("player_collected_checkpoint")
+	queue_free()

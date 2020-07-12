@@ -25,7 +25,7 @@ margin_left = -6.0
 margin_top = -22.0
 margin_right = 8.0
 margin_bottom = -8.0
-text = "1"
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }

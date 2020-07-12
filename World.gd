@@ -9,18 +9,15 @@ var round_id = 0
 var passed_round = false
 
 var player
+var spawner
 
 var active_playing = true
 
 func _ready():
-	spawn_player()
-	
 	for goal in get_tree().get_nodes_in_group("goals"):
 		connect("next_round", goal, "_on_Next_Round_Start")
-		
 	emit_signal("next_round", round_id)
-	
-	$CountDown.count_down()
+	$PauseAfterRewind.start()
 
 
 func _on_CountDown_new_time(time, time_factor):
@@ -79,13 +76,22 @@ func _on_PauseAfterRewind_timeout():
 
 
 func spawn_player():
-	var spawner = get_node("Entrances/" + str(round_id))
+	var exit = get_node("Exits/" + str(round_id))
+	
+	var checkpoints = get_tree().get_nodes_in_group("checkpoints" + str(round_id))
+	for checkpoint in checkpoints:
+		checkpoint.connect("player_collected_checkpoint", exit, "_on_Checkpoint_Collected")
+	
+	exit.checkpoints_this_round = checkpoints.size()
+
+	spawner = get_node("Entrances/" + str(round_id))
 	player = Player.instance()
 	player.connect("player_died", self, "_on_Player_player_died")
 	player.connect("player_reached_exit", self, "_on_Player_player_reached_exit")
 	player.position = spawner.global_position
 	get_tree().current_scene.add_child(player)
 
-
-
-
+	var cameraTracker = RemoteTransform2D.new()
+	cameraTracker.remote_path = NodePath("/root/World/Camera2D")
+	player.add_child(cameraTracker)
+	cameraTracker.position = Vector2(0,0)

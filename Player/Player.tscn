@@ -25,6 +25,14 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDetector"]
 shape = ExtResource( 3 )
 
+[node name="CheckpointDetector" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointDetector"]
+shape = ExtResource( 3 )
+
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 frames = ExtResource( 1 )
@@ -96,4 +104,5 @@ visible = false
 visible = false
 rotation = 3.14159
 [connection signal="area_entered" from="GoalDetector" to="." method="_on_GoalDetector_area_entered"]
+[connection signal="area_entered" from="CheckpointDetector" to="." method="_on_CheckpointDetector_area_entered"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]

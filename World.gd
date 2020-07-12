@@ -4,8 +4,9 @@ signal next_round
 
 onready var Player = preload("res://Player/Player.tscn")
 onready var RewindEffect = preload("res://Effects/RewindEffect.tscn")
-
 onready var countDown = $CanvasLayer/CountDown
+
+var SpawnEffect = preload("res://Effects/SpawnEffect.tscn")
 
 var round_id = 0
 var passed_round = false
@@ -44,7 +45,7 @@ func _on_CountDown_timeout():
 func _on_Player_player_died():
 	active_playing = false
 	get_tree().call_group("robots", "_on_Time_Timeout")
-	countDown.count_back_up(0.3)
+	countDown.count_back_up(0)
 	$PauseAfterTimeout.start()
 
 
@@ -71,9 +72,18 @@ func _on_CountDown_time_reset():
 			round_id += 1
 			emit_signal("next_round", round_id)
 			passed_round = false
+			
+			var effect_spawner = get_node("Entrances/" + str(round_id))
+			var spawnEffect = SpawnEffect.instance()
+			spawnEffect.position = effect_spawner.global_position
+			get_tree().current_scene.add_child(spawnEffect)
+			spawnEffect.play(1)
+			
+			
 		else:
-			print('you won the game')
-			return
+			if LevelNum.level == 1:
+				LevelNum.next_level()
+
 	
 	print('time back to full, now we play again')
 	get_tree().call_group("robots", "_on_Time_Reset")

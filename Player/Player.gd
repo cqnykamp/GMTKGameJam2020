@@ -8,6 +8,9 @@ var PlayerReplayExplosion = preload("res://Player/PlayerReplayExplosion.tscn")
 var Robot = preload("res://Robots/Robot.tscn")
 var ExitEffect = preload("res://Effects/ExitEffect.tscn")
 
+var Explosion = preload("res://Effects/CrushEffect.tscn")
+
+
 var MAX_SPEED = 200.0 # maximum horizontal velocity thru air
 var JUMP_SPEED = -500.0
 var GRAVITY = 1000.0
@@ -273,6 +276,12 @@ func spawn_explosion_clone():
 	get_tree().current_scene.call_deferred("add_child",playerReplay)
 	playerReplay.call_deferred("start_at_end", record, sound_effects)
 	playerReplay.global_position = global_position
+	
+	var explosion = Explosion.instance()
+	get_tree().current_scene.call_deferred("add_child",explosion)
+	explosion.global_position = global_position
+	explosion.play(1)
+	
 	
 func spawn_robot():
 	var robot = Robot.instance()

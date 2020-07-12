@@ -1,18 +1,18 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://GameCamera.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Doorways/Checkpoint.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Doorways/Entrance.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/CountDown.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Doorways/Checkpoint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Doorways/Entrance.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/CountDown.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Doorways/Exit.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/SMBackground.png" type="Texture" id=6]
-[ext_resource path="res://Sounds/SupermarketMusic1.wav" type="AudioStream" id=7]
-[ext_resource path="res://World/PrisonSheet.png" type="Texture" id=8]
+[ext_resource path="res://World/PrisonSheet.png" type="Texture" id=6]
+[ext_resource path="res://World/SMBackground.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/SupermarketMusic1.wav" type="AudioStream" id=8]
 [ext_resource path="res://World.gd" type="Script" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "PrisonSheet.png 0"
-0/texture = ExtResource( 8 )
+0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 128, 128 )
@@ -35,7 +35,7 @@ __meta__ = {
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 4096, 2400 )
@@ -52,49 +52,49 @@ tile_data = PoolIntArray( 7, 1, 0, 8, 1, 0, 9, 1, 0, 65541, 1, 0, 65542, 1, 0, 6
 [node name="Entrances" type="Node2D" parent="."]
 visible = false
 
-[node name="0" parent="Entrances" instance=ExtResource( 3 )]
+[node name="0" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 618.858, 410.4 )
 
-[node name="1" parent="Entrances" instance=ExtResource( 3 )]
+[node name="1" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 336.308, 471.051 )
 
-[node name="2" parent="Entrances" instance=ExtResource( 3 )]
+[node name="2" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 625.258, 182.825 )
 
-[node name="3" parent="Entrances" instance=ExtResource( 3 )]
+[node name="3" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 443.965, 194.025 )
 
-[node name="4" parent="Entrances" instance=ExtResource( 3 )]
+[node name="4" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 527.949, 469.451 )
 
-[node name="5" parent="Entrances" instance=ExtResource( 3 )]
+[node name="5" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 247.856, 138.825 )
 
-[node name="6" parent="Entrances" instance=ExtResource( 3 )]
+[node name="6" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 522.949, 335.078 )
 
-[node name="7" parent="Entrances" instance=ExtResource( 3 )]
+[node name="7" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 167.008, 194.025 )
 
-[node name="8" parent="Entrances" instance=ExtResource( 3 )]
+[node name="8" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 280.888, 477.451 )
 
-[node name="9" parent="Entrances" instance=ExtResource( 3 )]
+[node name="9" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 631.658, 289.215 )
 
-[node name="10" parent="Entrances" instance=ExtResource( 3 )]
+[node name="10" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 437.565, 332.375 )
 
-[node name="11" parent="Entrances" instance=ExtResource( 3 )]
+[node name="11" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 916.01, 123.776 )
 
-[node name="13" parent="Entrances" instance=ExtResource( 3 )]
+[node name="13" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 735.407, 289.215 )
 
-[node name="14" parent="Entrances" instance=ExtResource( 3 )]
+[node name="14" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 638.058, 495.301 )
 
-[node name="12" parent="Entrances" instance=ExtResource( 3 )]
+[node name="12" parent="Entrances" instance=ExtResource( 2 )]
 position = Vector2( 841.675, 477.451 )
 
 [node name="Exits" type="Node2D" parent="."]
@@ -146,13 +146,13 @@ position = Vector2( 160.608, 488.901 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
 
-[node name="1-1" parent="Checkpoints" instance=ExtResource( 2 )]
+[node name="1-1" parent="Checkpoints" instance=ExtResource( 1 )]
 position = Vector2( 546, 491 )
 
-[node name="1-2" parent="Checkpoints" instance=ExtResource( 2 )]
+[node name="1-2" parent="Checkpoints" instance=ExtResource( 1 )]
 position = Vector2( 778, 299 )
 
-[node name="1-3" parent="Checkpoints" instance=ExtResource( 2 )]
+[node name="1-3" parent="Checkpoints" instance=ExtResource( 1 )]
 position = Vector2( 818, 132.425 )
 
 [node name="PauseAfterTimeout" type="Timer" parent="."]
@@ -162,14 +162,14 @@ one_shot = true
 [node name="PauseAfterRewind" type="Timer" parent="."]
 one_shot = true
 
-[node name="Camera2D" parent="." instance=ExtResource( 1 )]
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CountDown" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="CountDown" parent="CanvasLayer" instance=ExtResource( 3 )]
 [connection signal="timeout" from="PauseAfterTimeout" to="." method="_on_PauseAfterTimeout_timeout"]
 [connection signal="timeout" from="PauseAfterRewind" to="." method="_on_PauseAfterRewind_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

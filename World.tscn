@@ -85,42 +85,6 @@ position = Vector2( 336.308, 471.051 )
 [node name="2" parent="Entrances" instance=ExtResource( 3 )]
 position = Vector2( 625.258, 182.825 )
 
-[node name="3" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 443.965, 194.025 )
-
-[node name="4" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 527.949, 469.451 )
-
-[node name="5" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 247.856, 138.825 )
-
-[node name="6" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 522.949, 335.078 )
-
-[node name="7" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 167.008, 194.025 )
-
-[node name="8" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 280.888, 477.451 )
-
-[node name="9" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 631.658, 289.215 )
-
-[node name="10" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 437.565, 332.375 )
-
-[node name="11" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 916.01, 123.776 )
-
-[node name="13" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 735.407, 289.215 )
-
-[node name="14" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 638.058, 495.301 )
-
-[node name="12" parent="Entrances" instance=ExtResource( 3 )]
-position = Vector2( 841.675, 477.451 )
-
 [node name="Exits" type="Node2D" parent="."]
 
 [node name="0" parent="Exits" instance=ExtResource( 5 )]
@@ -131,42 +95,6 @@ position = Vector2( 767.907, 281.215 )
 
 [node name="2" parent="Exits" instance=ExtResource( 5 )]
 position = Vector2( 741.407, 434.651 )
-
-[node name="3" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 620.258, 488.901 )
-
-[node name="4" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 866.895, 123.776 )
-
-[node name="5" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 922.411, 402.4 )
-
-[node name="6" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 100.107, 346.375 )
-
-[node name="7" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 959.611, 146.425 )
-
-[node name="8" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 493.965, 186.025 )
-
-[node name="9" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 217.008, 408.8 )
-
-[node name="10" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 325.856, 211.891 )
-
-[node name="11" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 432.565, 480.901 )
-
-[node name="13" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 319.456, 487.301 )
-
-[node name="14" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 511.597, 152.825 )
-
-[node name="12" parent="Exits" instance=ExtResource( 5 )]
-position = Vector2( 160.608, 488.901 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
 

@@ -34,7 +34,7 @@ func is_playing():
 #	$DestroyTimer.start(get_animation_length())
 #	$AnimationPlayer.play("Run")
 ##	emit_signal("at_end")
-#
+
 #
 #func play_backwards_and_destroy():
 #	$DestroyTimer.start(get_animation_length())
@@ -43,3 +43,6 @@ func is_playing():
 
 #func _on_DestroyTimer_timeout():
 #	queue_free()
+
+func destroy():
+	queue_free()

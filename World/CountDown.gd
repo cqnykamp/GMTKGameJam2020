@@ -44,7 +44,7 @@ func count_down():
 
 func count_back_up(new_factor):
 	$ClockTicks.stop()
-	print('setting time factor')
+#	print('setting time factor')
 	set_deferred("time_factor", new_factor)
 
 func _on_ClockTicks_finished():

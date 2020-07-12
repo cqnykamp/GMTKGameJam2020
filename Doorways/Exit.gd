@@ -32,6 +32,7 @@ func no_more_checkpoints():
 	visible = true
 		
 func _on_Next_Round_Start(round_id):
+	checkpoints_left = checkpoints_this_round
 	if round_id == active_round and checkpoints_left == 0:
 		no_more_checkpoints()
 	else:

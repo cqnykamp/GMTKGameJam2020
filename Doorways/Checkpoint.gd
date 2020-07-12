@@ -13,7 +13,7 @@ func _ready():
 		active_round = int(name.substr(0, name.length()-2))
 		print(active_round)
 		add_to_group("checkpoints_all")
-		add_to_group("checkpoints" + name[0])
+		add_to_group("checkpoints" + str(active_round))
 		$Sprite.frame = randi() % 3
 
 func _process(delta):

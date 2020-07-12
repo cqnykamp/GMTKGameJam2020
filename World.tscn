@@ -122,6 +122,7 @@ stream = ExtResource( 9 )
 [node name="CountDown" parent="CanvasLayer" instance=ExtResource( 7 )]
 
 [node name="Camera2D" parent="." instance=ExtResource( 8 )]
+current = false
 [connection signal="timeout" from="PauseAfterTimeout" to="." method="_on_PauseAfterTimeout_timeout"]
 [connection signal="timeout" from="PauseAfterRewind" to="." method="_on_PauseAfterRewind_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

@@ -57,11 +57,18 @@ func _on_Player_player_reached_exit():
 	$PauseAfterTimeout.start()
 
 func _on_PauseAfterTimeout_timeout():
-	countDown.count_back_up(-5)
-	
-	var rewindEffect = RewindEffect.instance()
-	$CanvasLayer.add_child(rewindEffect)
-	rewindEffect.global_position = get_viewport_rect().size / 2
+	if passed_round and not round_id < get_tree().get_nodes_in_group("goals").size() - 1:
+		if LevelNum.level == 1:
+			LevelNum.next_level()
+		else:
+			LevelNum.win()
+			
+	else:
+		countDown.count_back_up(-5)
+		
+		var rewindEffect = RewindEffect.instance()
+		$CanvasLayer.add_child(rewindEffect)
+		rewindEffect.global_position = get_viewport_rect().size / 2
 
 
 
@@ -70,7 +77,7 @@ func _on_CountDown_time_reset():
 		if round_id < get_tree().get_nodes_in_group("goals").size() - 1:
 		
 			round_id += 1
-			emit_signal("next_round", round_id)
+
 			passed_round = false
 			
 			var effect_spawner = get_node("Entrances/" + str(round_id))
@@ -78,11 +85,7 @@ func _on_CountDown_time_reset():
 			spawnEffect.position = effect_spawner.global_position
 			get_tree().current_scene.add_child(spawnEffect)
 			spawnEffect.play(1)
-			
-			
-		else:
-			if LevelNum.level == 1:
-				LevelNum.next_level()
+
 
 	
 	print('time back to full, now we play again')
@@ -91,6 +94,8 @@ func _on_CountDown_time_reset():
 	$PauseAfterRewind.start()
 
 func _on_PauseAfterRewind_timeout():
+	emit_signal("next_round", round_id)
+	
 	active_playing = true
 	countDown.count_down()
 	spawn_player()

@@ -47,7 +47,7 @@ func count_back_up(new_factor):
 	print('setting time factor')
 	set_deferred("time_factor", new_factor)
 
-
 func _on_ClockTicks_finished():
 	if time > 0 and time_factor > 0:
-		$ClockTicks.play()
+#		$ClockTicks.play()
+		pass

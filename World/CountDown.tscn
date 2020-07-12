@@ -478,4 +478,5 @@ __meta__ = {
 
 [node name="ClockTicks" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+autoplay = true
 [connection signal="finished" from="ClockTicks" to="." method="_on_ClockTicks_finished"]

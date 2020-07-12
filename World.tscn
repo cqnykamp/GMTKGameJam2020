@@ -7,7 +7,7 @@
 [ext_resource path="res://Doorways/Exit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Doorways/Checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/CountDown.tscn" type="PackedScene" id=7]
-[ext_resource path="res://World/Camera.gd" type="Script" id=8]
+[ext_resource path="res://GameCamera.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Sounds/SupermarketMusic1.wav" type="AudioStream" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -186,23 +186,14 @@ one_shot = true
 [node name="PauseAfterRewind" type="Timer" parent="."]
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 458, 267 )
-current = true
-zoom = Vector2( 0.9, 0.9 )
-limit_left = 0
-limit_top = 0
-limit_right = 1024
-limit_bottom = 600
-smoothing_enabled = true
-script = ExtResource( 8 )
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CountDown" parent="CanvasLayer" instance=ExtResource( 7 )]
+
+[node name="Camera2D" parent="." instance=ExtResource( 8 )]
 [connection signal="timeout" from="PauseAfterTimeout" to="." method="_on_PauseAfterTimeout_timeout"]
 [connection signal="timeout" from="PauseAfterRewind" to="." method="_on_PauseAfterRewind_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

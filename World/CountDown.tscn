@@ -449,6 +449,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="CountDown" type="Node2D"]
+pause_mode = 1
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]

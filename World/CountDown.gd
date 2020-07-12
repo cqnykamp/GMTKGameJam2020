@@ -11,7 +11,9 @@ var time_factor = 0
 var has_signaled_timeout = false
 
 func _ready():
-	$Label.text = str(level_start_time)
+#	$Label.text = str(level_start_time)
+	$ProgressBar.max_value = level_start_time
+	$ProgressBar.value = level_start_time
 	
 func _process(delta):
 	
@@ -23,6 +25,7 @@ func _process(delta):
 		
 	elif time < 0 and time_factor != 0:
 		emit_signal("time_reset")
+		$ClockTicks.stop()
 		time = 0
 		time_factor = 0
 		
@@ -33,12 +36,18 @@ func _process(delta):
 	if time < level_start_time:
 		has_signaled_timeout = false
 	
-	$Label.text = str(level_start_time - floor(time))
-
+	$ProgressBar.value = level_start_time - time
 
 func count_down():
 	set_deferred("time_factor", 1)
+	$ClockTicks.play()
 
 func count_back_up(new_factor):
+	$ClockTicks.stop()
 	print('setting time factor')
 	set_deferred("time_factor", new_factor)
+
+
+func _on_ClockTicks_finished():
+	if time > 0 and time_factor > 0:
+		$ClockTicks.play()

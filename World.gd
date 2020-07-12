@@ -16,8 +16,16 @@ var spawner
 var active_playing = true
 
 func _ready():
+	
 	for goal in get_tree().get_nodes_in_group("goals"):
 		connect("next_round", goal, "_on_Next_Round_Start")
+		var checkpoints = get_tree().get_nodes_in_group("checkpoints" + str(goal.name))
+		for checkpoint in checkpoints:
+			connect("next_round", checkpoint, "_on_Next_Round_Start")
+			checkpoint.connect("player_collected_checkpoint", goal, "_on_Checkpoint_Collected")
+	
+		goal.checkpoints_this_round = checkpoints.size()
+	
 	emit_signal("next_round", round_id)
 	$PauseAfterRewind.start()
 
@@ -36,6 +44,7 @@ func _on_CountDown_timeout():
 func _on_Player_player_died():
 	active_playing = false
 	get_tree().call_group("robots", "_on_Time_Timeout")
+	countDown.count_back_up(0.3)
 	$PauseAfterTimeout.start()
 
 
@@ -78,13 +87,6 @@ func _on_PauseAfterRewind_timeout():
 
 
 func spawn_player():
-	var exit = get_node("Exits/" + str(round_id))
-	
-	var checkpoints = get_tree().get_nodes_in_group("checkpoints" + str(round_id))
-	for checkpoint in checkpoints:
-		checkpoint.connect("player_collected_checkpoint", exit, "_on_Checkpoint_Collected")
-	
-	exit.checkpoints_this_round = checkpoints.size()
 
 	spawner = get_node("Entrances/" + str(round_id))
 	player = Player.instance()

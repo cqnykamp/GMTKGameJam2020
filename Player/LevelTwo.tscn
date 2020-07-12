@@ -1,21 +1,18 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://World/SupermarketSheet.png" type="Texture" id=1]
-[ext_resource path="res://World/SMBackground.png" type="Texture" id=2]
+[ext_resource path="res://World/Camera.gd" type="Script" id=1]
+[ext_resource path="res://Doorways/Checkpoint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Doorways/Entrance.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World.gd" type="Script" id=4]
+[ext_resource path="res://World/CountDown.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Doorways/Exit.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Doorways/Checkpoint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://World/CountDown.tscn" type="PackedScene" id=7]
-[ext_resource path="res://World/Camera.gd" type="Script" id=8]
-[ext_resource path="res://Sounds/SupermarketMusic1.wav" type="AudioStream" id=9]
+[ext_resource path="res://World/SMBackground.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/SupermarketMusic1.wav" type="AudioStream" id=7]
+[ext_resource path="res://World/PrisonSheet.png" type="Texture" id=8]
+[ext_resource path="res://World.gd" type="Script" id=9]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
-
-[sub_resource type="TileSet" id=2]
-0/name = "SupermarketSheet.png 0"
-0/texture = ExtResource( 1 )
+[sub_resource type="TileSet" id=1]
+0/name = "PrisonSheet.png 0"
+0/texture = ExtResource( 8 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 128, 128 )
@@ -24,49 +21,28 @@ points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 1 )
 0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
 0/z_index = 0
-1/name = "SupermarketSheet.png 1"
-1/texture = ExtResource( 1 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 256, 0, 128, 128 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
 
-[node name="World" type="Node2D"]
+[node name="LevelTwo" type="Node2D"]
 position = Vector2( -2, -3 )
-script = ExtResource( 4 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_vertical_guides_": [ -19.1198 ]
 }
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 4096, 2400 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 0.25, 0.25 )
-tile_set = SubResource( 2 )
+tile_set = SubResource( 1 )
 cell_size = Vector2( 128, 128 )
 collision_layer = 2
 collision_mask = 0
@@ -170,13 +146,13 @@ position = Vector2( 160.608, 488.901 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
 
-[node name="1-1" parent="Checkpoints" instance=ExtResource( 6 )]
+[node name="1-1" parent="Checkpoints" instance=ExtResource( 2 )]
 position = Vector2( 546, 491 )
 
-[node name="1-2" parent="Checkpoints" instance=ExtResource( 6 )]
+[node name="1-2" parent="Checkpoints" instance=ExtResource( 2 )]
 position = Vector2( 778, 299 )
 
-[node name="1-3" parent="Checkpoints" instance=ExtResource( 6 )]
+[node name="1-3" parent="Checkpoints" instance=ExtResource( 2 )]
 position = Vector2( 818, 132.425 )
 
 [node name="PauseAfterTimeout" type="Timer" parent="."]
@@ -195,14 +171,14 @@ limit_top = 0
 limit_right = 1024
 limit_bottom = 600
 smoothing_enabled = true
-script = ExtResource( 8 )
+script = ExtResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+stream = ExtResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CountDown" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="CountDown" parent="CanvasLayer" instance=ExtResource( 4 )]
 [connection signal="timeout" from="PauseAfterTimeout" to="." method="_on_PauseAfterTimeout_timeout"]
 [connection signal="timeout" from="PauseAfterRewind" to="." method="_on_PauseAfterRewind_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

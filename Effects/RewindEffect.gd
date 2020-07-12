@@ -4,7 +4,7 @@ func _ready():
 	$Play.play()
 	$AnimatedSprite.play()
 	$StartFadeOut.start()
-	$AnimationPlayer.play("FadeIn")
+#	$AnimationPlayer.play("FadeIn")
 	
 
 

@@ -11,6 +11,7 @@ var time_factor = 0
 
 var frame_id = 0 setget set_frame_id
 
+var has_disappeared = false
 
 var animation_length
 
@@ -66,7 +67,8 @@ func _physics_process(delta):
 			movement_direction = movement_direction.normalized()
 		
 		if time_factor != 0:
-			$ActionSoundEffects.play(sound_effects[id])
+#			$ActionSoundEffects.play(sound_effects[id])
+			pass
 	else:
 		$CollisionShape2D.disabled = true
 		visible = false
@@ -80,6 +82,11 @@ func _physics_process(delta):
 			if effect.is_playing():
 				effect.stop()
 			effect.visible = false
+			
+	if not has_disappeared and time_factor < 0:
+		$Sprite.frame += 3
+		effect.set_player_image($Sprite.frame)
+		has_disappeared = true
 			
 			
 func destroy():

@@ -41,5 +41,5 @@ anims/Run = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 modulate = Color( 1, 1, 1, 0.12549 )
 position = Vector2( 0, 100 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.35, 0.35 )
 frames = ExtResource( 2 )

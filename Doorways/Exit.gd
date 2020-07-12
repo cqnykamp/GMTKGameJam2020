@@ -17,21 +17,28 @@ func _process(delta):
 		$EditorLabel.text = name
 		
 func set_checkpoint_num(num):
-	print('name: '+str(name)+' num '+str(num))
+#	print('name: '+str(name)+' num '+str(num))
 	checkpoints_this_round = num
 	if checkpoints_this_round == 0:
 		no_more_checkpoints()
 		
 func no_more_checkpoints():
-	print('no more checkpoints')
+#	print('no more checkpoints')
 	set_deferred("monitorable", true)
 	set_deferred("monitoring", true)
-	$Sprite.modulate = Color("ff00c5")
+#	$Sprite.modulate = Color("ff00c5")
+	visible = true
 		
 func _on_Next_Round_Start(round_id):
-	set_deferred("monitorable", false)
-	set_deferred("monitoring", false)
-	$Sprite.modulate = Color("00ff00c5")
+	if round_id == active_round and checkpoints_this_round == 0:
+		no_more_checkpoints()
+	else:
+		set_deferred("monitorable", false)
+		set_deferred("monitoring", false)
+	#	$Sprite.modulate = Color("00ff00c5")
+		visible = false
+	
+
 
 #func _on_Next_Round_Start(round_id):
 #	if round_id == active_round:

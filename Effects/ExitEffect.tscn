@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/PlayerSprites.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Effects/ExitEffect.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/Goal1.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Run"
@@ -30,6 +31,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 135.0 ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="ExitEffect" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -43,4 +58,7 @@ frames = ExtResource( 1 )
 anims/Run = SubResource( 1 )
 
 [node name="DestroyTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="timeout" from="DestroyTimer" to="." method="_on_DestroyTimer_timeout"]

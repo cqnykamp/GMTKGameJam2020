@@ -4,6 +4,7 @@ signal player_died
 signal player_reached_exit
 
 var PlayerReplay = preload("res://Player/PlayerReplay.tscn")
+var PlayerReplayExplosion = preload("res://Player/PlayerReplayExplosion.tscn")
 var Robot = preload("res://Robots/Robot.tscn")
 var ExitEffect = preload("res://Effects/ExitEffect.tscn")
 
@@ -31,6 +32,13 @@ var left = Array()
 var right = Array()
 var top = Array()
 var bottom = Array()
+
+
+func _ready():
+	if LevelNum.level == 1:
+		$Sprite.frame = 0
+	else:
+		$Sprite.frame = 2
 
 
 func _process(delta):
@@ -186,17 +194,17 @@ func _physics_process(delta):
 		sound_effects.remove(sound_effects.size()-1)
 		sound_effects.append("crush")
 		$ActionSoundEffects.play("crush")
-		die()
+		explode()
 
 	elif left.size() > 0 and right.size() > 0:
 		print('crushed horizontal')
 		sound_effects.remove(sound_effects.size()-1)
 		sound_effects.append("crush")
 		$ActionSoundEffects.play("crush")
-		die()
+		explode()
 		
 	if position.y > 600:
-		die()
+		explode()
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
@@ -211,10 +219,16 @@ func _physics_process(delta):
 	sound_effects.append(this_sound_effect)
 	
 
-			
+func explode():
+	emit_signal("player_died")
+	$CollisionBox.disabled = true
 
+	spawn_explosion_clone()
+	queue_free()
+	
 		
 func die():
+	# this one is time out, not explode
 	emit_signal("player_died")
 	$CollisionBox.disabled = true
 	
@@ -230,7 +244,7 @@ func _on_GoalDetector_area_entered(area):
 	sound_effects.append("goal")
 	$ActionSoundEffects.play("goal")
 	
-	print('spawn robot')
+#	print('spawn robot')
 	spawn_robot()
 	queue_free()
 	
@@ -247,6 +261,14 @@ func _on_Exit_Animation_Complete():
 
 func spawn_clone():
 	var playerReplay = PlayerReplay.instance()
+	playerReplay.frame_id = $Sprite.frame
+	get_tree().current_scene.call_deferred("add_child",playerReplay)
+	playerReplay.call_deferred("start_at_end", record, sound_effects)
+	playerReplay.global_position = global_position
+	
+func spawn_explosion_clone():
+	# the one difference is explosion
+	var playerReplay = PlayerReplayExplosion.instance()
 	playerReplay.frame_id = $Sprite.frame
 	get_tree().current_scene.call_deferred("add_child",playerReplay)
 	playerReplay.call_deferred("start_at_end", record, sound_effects)
